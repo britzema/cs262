@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="val1">1</string>
+    <string name="val2">2</string>
+    <string name="text_first_value">Value 1:</string>
+    <string name="text_second_value">Value 2:</string>
+    <string name="operator_text">Operator:</string>
+    <string name="value1int"> </string>
+    <string name="value2int"> </string>
+    <string name="calculate">Calculate</string>
+    <string name="result">0</string>
+    <string-array name="operations">
+        <item >+</item>
+        <item >-</item>
+        <item >*</item>
+        <item >/</item>
+    </string-array>
+</resources>
