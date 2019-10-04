@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lab04</string>
+    <string name="action_settings">Settings</string>
+    <string name="intro_text">Droid Desserts</string>
+    <string name="donuts">Donuts are a cops best friend.</string>
+    <string name="ice_cream_sandwiches">Ice cream sandwiches are overrated</string>
+    <string name="froyo">FroYo is premium self-serve frozen yogurt. Regular ice cream is superior though. </string>
+    <string name="donut_order_message">You ordered a donut.</string>
+    <string name="ice_cream_order_message">You ordered an ice cream sandwich.</string>
+    <string name="froyo_order_message">You ordered a FroYo.</string>
+</resources>
