@@ -1,0 +1,4 @@
+1. Is the service RESTful? If not, why not? If so, what key features make it RESTful.
+    It is RESTful. It follows the http protocol (maps to CRUD correctly). Another feature is that it is stateless. 
+2. What endpoints implement actions that are idempotent? nullipotent?
+    Get, post, and delete are idempotent because we can call them as many times as desired, and the result will not change depending on you calling it 1 time or 50 times. Post is nullpotent, if it is called more than once on the object, there will be two identical copies of the object
