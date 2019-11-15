@@ -1,0 +1,6 @@
+Homework 1
+I changed my gradle build from 3.5.0 to 3.5.2
+I changed Integer.toString(result) to 
+I deleted two variables in the string file because they were not being used
+Homework 2
+I added android:layout_marginLeft="8dp" to support older versions than API 17

@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         Spinner spinner = findViewById(R.id.http_spinner);
-        if (spinner != null){
+        if (spinner != null) {
             spinner.setOnItemSelectedListener(this);
             spinner.setAdapter(adapter);
         }
 
-        if (getSupportLoaderManager().getLoader(0) != null){
+        if (getSupportLoaderManager().getLoader(0) != null) {
             getSupportLoaderManager().initLoader(0, null, this);
         }
     }
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // TODO: finish work here
         String queryString = "";
         String transferProtocol = "";
-        if (bundle != null){
+        if (bundle != null) {
             queryString = bundle.getString(QUERY);
             transferProtocol = bundle.getString(PROTOCOL);
         }
@@ -63,10 +63,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(@NonNull Loader<String> loader, String s) {
-        try{
+        try {
             mSourceCodeTextView.setText(s);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             mSourceCodeTextView.setText(R.string.no_response);
         }
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public void getSourceCode(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (inputMethodManager != null){
+        if (inputMethodManager != null) {
             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
 
@@ -100,25 +99,22 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // check connectivity before executing query
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = null;
-        if (connectivityManager != null){
+        if (connectivityManager != null) {
             networkInfo = connectivityManager.getActiveNetworkInfo();
         }
 
-        if (networkInfo != null && networkInfo.isConnected() && (queryString.length() != 0)){
+        if (networkInfo != null && networkInfo.isConnected() && (queryString.length() != 0)) {
             Bundle queryBundle = new Bundle();
             queryBundle.putString(QUERY, queryString);
             queryBundle.putString(PROTOCOL, mSpinnerValue);
             getSupportLoaderManager().restartLoader(0, queryBundle, this);
             mSourceCodeTextView.setText(R.string.loading);
-        }
-        else{
-            if (queryString.length() == 0){
+        } else {
+            if (queryString.length() == 0) {
                 Toast.makeText(this, R.string.no_url, Toast.LENGTH_LONG).show();
-            }
-            else if(!URLUtil.isValidUrl(queryString)){
+            } else if (!URLUtil.isValidUrl(queryString)) {
                 Toast.makeText(this, R.string.invalid_url, Toast.LENGTH_LONG).show();
-            }
-            else{
+            } else {
                 Toast.makeText(this, R.string.no_connection, Toast.LENGTH_LONG).show();
             }
         }

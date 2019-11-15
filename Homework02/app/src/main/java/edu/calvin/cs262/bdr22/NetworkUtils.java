@@ -17,20 +17,19 @@ public class NetworkUtils {
     private static final String HTTP = "http";
     private static final String HTTPS = "https";
 
-    static String getSourceCode(Context context, String queryString, String transferProtocol){
+    static String getSourceCode(Context context, String queryString, String transferProtocol) {
         HttpURLConnection httpURLConnection = null;
         BufferedReader bufferedReader = null;
         String htmlSourceCode = null;
         String[] protocol = context.getResources().getStringArray(R.array.http_array);
-        try{
+        try {
             Uri builder;
-            if (transferProtocol.equals(protocol[0])){
+            if (transferProtocol.equals(protocol[0])) {
                 // http
                 builder = Uri.parse(queryString).buildUpon()
                         .scheme(HTTP)
                         .build();
-            }
-            else{
+            } else {
                 // https
                 builder = Uri.parse(queryString).buildUpon()
                         .scheme(HTTPS)
@@ -46,23 +45,22 @@ public class NetworkUtils {
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder stringBuilder = new StringBuilder();
             String line;
-            while((line = bufferedReader.readLine())!= null){
+            while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);
                 stringBuilder.append("\n");
             }
-            if (stringBuilder.length() == 0){
+            if (stringBuilder.length() == 0) {
                 return null;
             }
             htmlSourceCode = stringBuilder.toString();
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
-            if (httpURLConnection != null){
+        } finally {
+            if (httpURLConnection != null) {
                 httpURLConnection.disconnect();
             }
-            if (bufferedReader != null){
+            if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {
